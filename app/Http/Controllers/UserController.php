@@ -21,6 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+
         return view('users.list', compact('users'));
     }
 
@@ -70,6 +71,7 @@ class UserController extends Controller
     {
         $user = User::find ($id);
         if(!$user) abort('404');
+
         return view('users.edit', compact('user'));
     }
 
@@ -87,6 +89,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
+
         return redirect('/users');
     }
 
@@ -99,6 +102,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
+
         return redirect('/users');
     }
 }

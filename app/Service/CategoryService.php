@@ -11,12 +11,14 @@ class CategoryService implements CategoryInterface
     public function getAll()
     {
         $categories = Category::all();
+
         return $categories;
     }
 
     public function getCategoryById($category)
     {
         $category = Category::find($category);
+
         return $category;
     }
 

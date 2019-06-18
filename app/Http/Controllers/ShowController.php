@@ -10,20 +10,15 @@ use App\Service\CategoryService;
 use App\Http\Resources\CategoryResource as CategoryResource;
 use App\Service\RatingService;
 use App\Http\Resources\RatingResource as RatingResource;
-// use App\Service\CommentService;
-// use App\Http\Resources\CommentResource as CommentResource;
-// use App\Service\UserService;
-// use App\Http\Resources\UserResource as UserResource;
 use Cookie;
 use Auth;
 
 class ShowController extends Controller
 {
-    public $postService;
-    public $categoryService;
-    public $ratingService;
-    public $commentService;
-    public $userService;
+    protected $postService;
+    protected $categoryService;
+    protected $ratingService;
+
     public function __construct(PostService $postService, CategoryService $categoryService,
         RatingService $ratingService)
     {
@@ -64,6 +59,7 @@ class ShowController extends Controller
         if ($request->ajax()) {
             return $html;
         }
+
         return view( 'show.list', compact('posts') );
     }
 
@@ -91,6 +87,7 @@ class ShowController extends Controller
 
         // dem luot view co cookie
         $post = countView($post);
+
         return view('show.detail', [ 'post' => $post]);
     }
 }

@@ -9,12 +9,14 @@ class CommentService implements CommentInterface
     public function getParentComment($postId)
     {
         $comments = Comment::where( 'parent_id', 0 )->where( 'post_id', $postId )->get();
+
         return $comments;
     }
 
     public function getChildComment($parentId)
     {
         $comment_child = Comment::where( 'parent_id', $parentId )->get();
+
         return $comment_child;
     }
 

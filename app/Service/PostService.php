@@ -9,18 +9,21 @@ class PostService implements PostInterface
     public function getAll()
     {
         $posts =  Post::paginate(6);
+
         return $posts;
     }
 
     public function getPostById($post)
     {
         $post = Post::find($post);
+
         return $post;
     }
 
     public function getPostIdMax()
     {
         $id = Post::max('id');
+
         return $id;
     }
 

@@ -10,7 +10,7 @@ use Auth;
 
 class CategoryController extends Controller
 {
-    public $categoryService;
+    protected $categoryService;
 
     public function __construct(CategoryService $categoryService)
     {
@@ -48,9 +48,10 @@ class CategoryController extends Controller
     {
         $category = new Category([
             'name' => $request->name,
-            'slug' => $request->slug
+            'slug' => $request->slug,
         ]);
         $category->save();
+
         return redirect( '/categories' )->with('success', 'Category saved!');
     }
 
@@ -64,6 +65,7 @@ class CategoryController extends Controller
     {
         $category=$this->categoryService->getCategoryById($id);
         if(!$category) abort('404');
+
         return view( 'categories.edit', compact('category') );
     }
 
@@ -81,6 +83,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
+
         return redirect('/categories');
     }
 
@@ -93,6 +96,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $this->categoryService->deleteCategory($id);
+
         return redirect('/categories');
     }
 }

@@ -17,8 +17,8 @@ use Carbon\Carbon;
 class PostController extends Controller
 {
 
-    public $postService;
-    public $categoryService;
+    protected $postService;
+    protected $categoryService;
     public function __construct(PostService $postService, CategoryService $categoryService)
     {
         $this->middleware('auth');
@@ -33,6 +33,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->postService->getAll();
+
         return view( 'posts.list', compact('posts') );
     }
 
@@ -78,6 +79,7 @@ class PostController extends Controller
         $data['category_id'] = $request->category_id;
         $data['user_id']     = $request->user_id;
         $this->postService->createPost($data);
+
         return redirect( '/posts' );
     }
 
@@ -96,6 +98,7 @@ class PostController extends Controller
             $list[$category->id] = $category->name;
         }
         $categories = $list;
+
         return view('posts.edit', ['categories' => $categories, 'post' => $post ]);
     }
 
@@ -121,6 +124,7 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->user_id     = $request->user_id;
         $post->save();
+
         return redirect('/posts');
     }
 
@@ -133,6 +137,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $this->postService->deletePost($id);
+
         return redirect('/posts');
     }
 
@@ -160,6 +165,7 @@ class PostController extends Controller
         }
         $title = str_replace(' ','-',$title);
         $slug = $title.'-'.$id.'-'.$createAt;
+
         return $slug;
     }
 }

@@ -10,8 +10,8 @@ use App\Http\Resources\CommentResource as CommentResource;
 
 class CommentController extends Controller
 {
-    public $postService;
-    public $commentService;
+    protected $postService;
+    protected $commentService;
     public function __construct(PostService $postService, CommentService $commentService)
     {
         $this->middleware('auth');
@@ -29,6 +29,7 @@ class CommentController extends Controller
     {
         $post = $this->postService->getPostById($request->post_id);
         $this->commentService->addComment($request);
+
         return view( 'show.detail', compact('post') );
     }
 }

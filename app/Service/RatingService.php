@@ -17,6 +17,7 @@ class RatingService implements RatingInterface
     {
         $number = 0;
         $number =  Rating::where('post_id',$post)->where('user_id',$user)->first();
+
         return $number;
     }
 }

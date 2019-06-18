@@ -10,7 +10,7 @@ use Auth;
 
 class RatingController extends Controller
 {
-    public $ratingService;
+    protected $ratingService;
     public function __construct(RatingService $ratingService)
     {
         $this->ratingService = $ratingService;
@@ -42,6 +42,7 @@ class RatingController extends Controller
            $data->number = $request->number;
            $data->save();
         }
+
         return response()->json(['rating' => $data->number]);
     }
 }
