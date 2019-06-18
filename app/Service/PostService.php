@@ -3,9 +3,7 @@ namespace App\Service;
 
 use App\InterfaceService\PostInterface;
 use App\Post; // model
-/**
- *
- */
+
 class PostService implements PostInterface
 {
     public function getAll()

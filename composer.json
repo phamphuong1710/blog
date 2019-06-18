@@ -38,7 +38,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/ListComment.php"
+            "app/Helpers/ListComment.php",
+            "app/Helpers/PostView.php"
         ],
         "classmap": [
             "database/seeds",

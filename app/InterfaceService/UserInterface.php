@@ -1,6 +1,6 @@
 <?php
-namespace App\InterfaceService;
 
+namespace App\InterfaceService;
 
 interface UserInterface {
     public function getUserByID($id);

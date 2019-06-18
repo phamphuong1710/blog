@@ -42,7 +42,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         return User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -87,7 +86,6 @@ class UserController extends Controller
         if(!$user) abort('404');
         $user->name = $request->name;
         $user->email = $request->email;
-
         $user->save();
         return redirect('/users');
     }

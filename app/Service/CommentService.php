@@ -3,9 +3,7 @@ namespace App\Service;
 
 use App\InterfaceService\CommentInterface;
 use App\Comment; // model
-/**
- *
- */
+
 class CommentService implements CommentInterface
 {
     public function getParentComment($postId)
@@ -29,5 +27,4 @@ class CommentService implements CommentInterface
         $comment->parent_id = $request->parent_id;
         $comment->save();
     }
-
 }

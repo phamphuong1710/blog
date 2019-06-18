@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Service\CategoryService;
@@ -45,26 +46,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-
         $category = new Category([
             'name' => $request->name,
             'slug' => $request->slug
         ]);
-
         $category->save();
-
         return redirect( '/categories' )->with('success', 'Category saved!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
     }
 
     /**
@@ -93,7 +80,6 @@ class CategoryController extends Controller
         if(!$category) abort('404');
         $category->name = $request->name;
         $category->slug = $request->slug;
-
         $category->save();
         return redirect('/categories');
     }

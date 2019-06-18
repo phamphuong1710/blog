@@ -22,6 +22,7 @@ class ComposerStaticInit8e797042e1d5ba51e70403daa2c364e3
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '178c5f00015be78b1aac1c7f531807b8' => __DIR__ . '/../..' . '/app/Helpers/ListComment.php',
+        '7b89ceb30287f44eeecd793221336252' => __DIR__ . '/../..' . '/app/Helpers/PostView.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -419,6 +420,7 @@ class ComposerStaticInit8e797042e1d5ba51e70403daa2c364e3
         'App\\Providers\\CommentServiceProvider' => __DIR__ . '/../..' . '/app/Providers/CommentServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Providers\\ViewServiceProvider' => __DIR__ . '/../..' . '/app/Providers/ViewServiceProvider.php',
         'App\\Rating' => __DIR__ . '/../..' . '/app/Rating.php',
         'App\\Service\\CategoryService' => __DIR__ . '/../..' . '/app/Service/CategoryService.php',
         'App\\Service\\CommentService' => __DIR__ . '/../..' . '/app/Service/CommentService.php',

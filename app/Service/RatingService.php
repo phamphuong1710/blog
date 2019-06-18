@@ -3,9 +3,7 @@ namespace App\Service;
 
 use App\InterfaceService\RatingInterface;
 use App\Rating; // model
-/**
- *
- */
+
 class RatingService implements RatingInterface
 {
 
@@ -21,6 +19,5 @@ class RatingService implements RatingInterface
         $number =  Rating::where('post_id',$post)->where('user_id',$user)->first();
         return $number;
     }
-
 }
 

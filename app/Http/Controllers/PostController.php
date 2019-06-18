@@ -11,7 +11,6 @@ use App\Service\PostService;
 use App\Http\Resources\PostResource as PostResource;
 use App\Service\CategoryService;
 use App\Http\Resources\CategoryResource as CategoryResource;
-
 use Auth;
 use Carbon\Carbon;
 
@@ -44,7 +43,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         $user_id = Auth::id();
         $categories = $this->categoryService->getAll();
 
@@ -79,22 +77,8 @@ class PostController extends Controller
         $data['content']     = $request->content;
         $data['category_id'] = $request->category_id;
         $data['user_id']     = $request->user_id;
-
         $this->postService->createPost($data);
-
         return redirect( '/posts' );
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -108,13 +92,10 @@ class PostController extends Controller
         $user_id = Auth::id();
         $post = $this->postService->getPostById($id);
         $categories = $this->categoryService->getAll();
-
         foreach ($categories as $category) {
             $list[$category->id] = $category->name;
         }
-
         $categories = $list;
-
         return view('posts.edit', ['categories' => $categories, 'post' => $post ]);
     }
 
@@ -127,7 +108,6 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-
         $post = $this->postService->getPostById($id);
         if(!$post) abort('404');
         if ($request->hasFile('image')) {
@@ -140,7 +120,6 @@ class PostController extends Controller
         $post->content     = $request->content;
         $post->category_id = $request->category_id;
         $post->user_id     = $request->user_id;
-
         $post->save();
         return redirect('/posts');
     }
@@ -157,7 +136,7 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
-    public function createSlug($title, $id, $create_at)
+    public function createSlug($title, $id, $createAt)
     {
         $unicode = array(
 
@@ -179,11 +158,8 @@ class PostController extends Controller
         foreach($unicode as $nonUnicode=>$uni){
             $title = preg_replace("/($uni)/i", $nonUnicode, $title);
         }
-
         $title = str_replace(' ','-',$title);
-
-        $slug = $title.'-'.$id.'-'.$create_at;
-
+        $slug = $title.'-'.$id.'-'.$createAt;
         return $slug;
     }
 }

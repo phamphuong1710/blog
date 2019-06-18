@@ -21,4 +21,5 @@ return array(
     '0d8253363903f0ac7b0978dcde4e28a0' => $vendorDir . '/beyondcode/laravel-dump-server/helpers.php',
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     '178c5f00015be78b1aac1c7f531807b8' => $baseDir . '/app/Helpers/ListComment.php',
+    '7b89ceb30287f44eeecd793221336252' => $baseDir . '/app/Helpers/PostView.php',
 );

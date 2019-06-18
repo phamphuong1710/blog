@@ -1,6 +1,6 @@
 <?php
-namespace App\InterfaceService;
 
+namespace App\InterfaceService;
 
 interface PostInterface {
     public function getAll();

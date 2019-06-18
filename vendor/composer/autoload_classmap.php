@@ -50,6 +50,7 @@ return array(
     'App\\Providers\\CommentServiceProvider' => $baseDir . '/app/Providers/CommentServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Providers\\ViewServiceProvider' => $baseDir . '/app/Providers/ViewServiceProvider.php',
     'App\\Rating' => $baseDir . '/app/Rating.php',
     'App\\Service\\CategoryService' => $baseDir . '/app/Service/CategoryService.php',
     'App\\Service\\CommentService' => $baseDir . '/app/Service/CommentService.php',

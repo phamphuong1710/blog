@@ -3,9 +3,7 @@ namespace App\Service;
 
 use App\InterfaceService\UserInterface;
 use App\User; // model
-/**
- *
- */
+
 class UserService implements UserInterface
 {
 
@@ -14,7 +12,5 @@ class UserService implements UserInterface
         $user = User::find($id);
         return $user;
     }
-
-
 }
 

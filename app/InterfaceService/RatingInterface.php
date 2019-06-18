@@ -1,6 +1,6 @@
 <?php
-namespace App\InterfaceService;
 
+namespace App\InterfaceService;
 
 interface RatingInterface {
     public function addRating($data);

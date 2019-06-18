@@ -27,7 +27,6 @@ if ( ! function_exists( 'childComment' ) ) {
                         '</ul>';
             }
         }
-
         return $html;
     }
 }

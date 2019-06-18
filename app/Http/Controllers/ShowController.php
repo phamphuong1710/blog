@@ -10,10 +10,10 @@ use App\Service\CategoryService;
 use App\Http\Resources\CategoryResource as CategoryResource;
 use App\Service\RatingService;
 use App\Http\Resources\RatingResource as RatingResource;
-use App\Service\CommentService;
-use App\Http\Resources\CommentResource as CommentResource;
-use App\Service\UserService;
-use App\Http\Resources\UserResource as UserResource;
+// use App\Service\CommentService;
+// use App\Http\Resources\CommentResource as CommentResource;
+// use App\Service\UserService;
+// use App\Http\Resources\UserResource as UserResource;
 use Cookie;
 use Auth;
 
@@ -24,14 +24,13 @@ class ShowController extends Controller
     public $ratingService;
     public $commentService;
     public $userService;
-    public function __construct(PostService $postService, CategoryService $categoryService, RatingService $ratingService, CommentService $commentService, UserService $userService )
+    public function __construct(PostService $postService, CategoryService $categoryService,
+        RatingService $ratingService)
     {
 
         $this->postService     = $postService;
         $this->categoryService = $categoryService;
         $this->ratingService   = $ratingService;
-        $this->commentService  = $commentService;
-        $this->userService     = $userService;
     }
     /**
      * Display a listing of the resource.
@@ -63,32 +62,11 @@ class ShowController extends Controller
                 </div>';
         }
         if ($request->ajax()) {
-
             return $html;
         }
         return view( 'show.list', compact('posts') );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -112,54 +90,8 @@ class ShowController extends Controller
         }
 
         // dem luot view co cookie
-        $minutes = 5;
-        $cookieKey = 'post-'.$post->id;
-        $cookie = Cookie::get( $cookieKey );
-
-        if ( !$cookieKey ) {
-            $response = new Response('View');
-            $response->withCookie(cookie($cookieKey, 1, $minutes));
-        }
-        else {
-            $post->increment('views');
-            Cookie::queue($cookieKey, $post->views, $minutes);
-        }
-
+        $post = countView($post);
         return view('show.detail', [ 'post' => $post]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
 // dem luot view co cookie
